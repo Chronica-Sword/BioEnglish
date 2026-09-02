@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ article.title }} - BioEnglish Prep{% endblock %}
+
+{% block content %}
+<div class="reader-layout">
+    <!-- Left Pane: Article Reading -->
+    <div class="reading-pane">
+        <div class="reading-header">
+            <span class="level-badge 
+                {% if article.level == 'B1+' %}level-b1
+                {% elif article.level == 'B2' %}level-b2
+                {% elif article.level == 'B2+' %}level-b2p
+                {% else %}level-c1{% endif %}">
+                {{ article.level }}
+            </span>
+            <h1 style="font-family: var(--font-heading); font-size: 1.8rem; margin: 0.5rem 0;">{{ article.title }}</h1>
+            
+            <div class="reading-controls">
+                <button id="btn-zoom-out" class="control-btn">A-</button>
+                <button id="btn-zoom-in" class="control-btn">A+</button>
+                <span style="font-size: 0.8rem; color: var(--text-muted); align-self: center; margin-left: auto;">
+                    💡 Click on any word to look up its definition instantly!
+                </span>
+            </div>
+        </div>
+        
+        <div id="reading-text" class="reading-text">
+            {{ article.text | replace('\n', '</p><p>') | safe }}
+        </div>
+    </div>
+
+    <!-- Right Pane: Questions & Next Actions -->
+    <div class="sidebar-pane">
+        <div class="interactive-card" id="quiz-pane">
+            <h2 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 1.5rem; color: var(--color-secondary); display: flex; align-items: center; gap: 0.5rem;">
+                📝 Comprehension Check
+            </h2>
+            
+            {% for q in article.questions %}
+                <div class="question-container" data-q-id="{{ q.id }}" data-correct="{{ q.answer }}">
+                    <p class="question-text">{{ loop.index }}. {{ q.question }}</p>
+                    <div class="options-list">
+                        {% for opt in q.options %}
+                            <button class="option-btn" data-index="{{ loop.index0 }}">{{ opt }}</button>
+                        {% endfor %}
+                    </div>
+                    {% if q.explanation %}
+                        <div class="explanation-box">
+                            <strong>Explanation:</strong> {{ q.explanation }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            <div id="quiz-result" style="display: none; margin-top: 1rem;"></div>
+            
+            <div class="action-bar">
+                <button id="btn-submit-quiz" class="btn btn-primary" style="width: 100%;">Submit Answers</button>
+                <a href="/writer/{{ article.id }}" id="btn-go-writing" class="btn btn-primary" style="width: 100%; display: none;">
+                    Proceed to Writing Section →
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

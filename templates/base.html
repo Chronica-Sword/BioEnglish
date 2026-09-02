@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BioEnglish Prep{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                🧬 BioEnglish <span>Prep</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="/" class="{% if active_page == 'dashboard' %}active{% endif %}">Dashboard</a></li>
+                <li><a href="/history" class="{% if active_page == 'history' %}active{% endif %}">Essay History</a></li>
+                <li><a href="#" id="nav-settings">Settings & Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Interactive Dictionary Modal (Popup at bottom-right) -->
+    <div id="dict-modal" class="dict-modal">
+        <div class="dict-header">
+            <h4 id="dict-title" class="dict-word">Word</h4>
+            <button class="dict-close" onclick="closeDict()">&times;</button>
+        </div>
+        <div id="dict-body" class="dict-body">
+            <p class="dict-pos">Searching...</p>
+            <p class="dict-def">Loading definition...</p>
+        </div>
+        <button id="btn-save-vocab" class="btn btn-primary" style="margin-top: 1rem; width: 100%; display: none;" onclick="saveWordToVocab()">Save to Vocabulary</button>
+    </div>
+
+    <!-- Settings & Tools Modal -->
+    <div id="settings-overlay" class="settings-overlay"></div>
+    <div id="settings-modal" class="settings-modal">
+        <div class="dict-header">
+            <h3 style="font-family: var(--font-heading)">Settings & Tools</h3>
+            <button class="dict-close" id="btn-close-settings">&times;</button>
+        </div>
+        <div class="form-group" style="margin-top: 1rem;">
+            <label for="settings-api-key">Gemini API Key</label>
+            <input type="password" id="settings-api-key" class="form-input" placeholder="AIzaSy..." value="{{ api_key_configured or '' }}">
+            <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Needed only for Essay Evaluations and Article Generation.</p>
+        </div>
+        <button id="btn-save-settings" class="btn btn-primary" style="width: 100%; margin-bottom: 2rem;">Save API Key</button>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+            <h4 style="font-family: var(--font-heading); margin-bottom: 0.5rem; color: var(--color-secondary);">Generate Biotech Article</h4>
+            <div class="form-group">
+                <label for="gen-level">CEFR Level</label>
+                <select id="gen-level" class="form-input" style="background-color: var(--bg-main);">
+                    <option value="B1+">B1+</option>
+                    <option value="B2">B2</option>
+                    <option value="B2+">B2+</option>
+                    <option value="C1">C1</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="gen-topic">Biotechnology Topic</label>
+                <input type="text" id="gen-topic" class="form-input" placeholder="e.g. Biofuels, Stem Cells, Cloning">
+            </div>
+            <button id="btn-generate-article" class="btn btn-secondary gen-article-btn">Generate Article (Uses Gemini)</button>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-color); padding-top: 1.5rem; margin-top: 1.5rem;">
+            <h4 style="font-family: var(--font-heading); margin-bottom: 0.5rem; color: var(--color-accent);">Upload Biotechnology PDF</h4>
+            <div class="form-group">
+                <label for="pdf-file-input">Select Article PDF</label>
+                <input type="file" id="pdf-file-input" class="form-input" accept=".pdf" style="background-color: var(--bg-main); padding: 0.5rem;">
+                <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.25rem;">Extracts text, grades CEFR level, and builds questions/prompts.</p>
+            </div>
+            <button id="btn-upload-pdf" class="btn btn-secondary gen-article-btn" style="border-color: rgba(139, 92, 246, 0.3); color: var(--color-accent);">Upload & Process PDF</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

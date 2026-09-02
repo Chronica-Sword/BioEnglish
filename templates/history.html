@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Essay History - BioEnglish Prep{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div class="dashboard-title">
+        <h1>Writing Evaluation History</h1>
+        <p>Review your previous essays and track your progress towards C1 proficient writing.</p>
+    </div>
+    <a href="/" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+
+{% if essays|length > 0 %}
+<div class="history-table-container">
+    <table class="history-table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Article Title</th>
+                <th>CEFR Level</th>
+                <th>TOEFL Score</th>
+                <th>IELTS Band</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for essay in essays %}
+            <tr>
+                <td style="color: var(--text-secondary);">{{ essay.date_submitted }}</td>
+                <td style="font-weight: 600;">{{ essay.article_title }}</td>
+                <td>
+                    <span class="level-badge 
+                        {% if essay.article_level == 'B1+' %}level-b1
+                        {% elif essay.article_level == 'B2' %}level-b2
+                        {% elif essay.article_level == 'B2+' %}level-b2p
+                        {% else %}level-c1{% endif %}">
+                        {{ essay.article_level }}
+                    </span>
+                </td>
+                <td>
+                    <span class="history-score-tag">{{ essay.score_toefl }} / 30</span>
+                </td>
+                <td>
+                    <span class="history-score-tag" style="background: rgba(59, 130, 246, 0.1); color: var(--color-secondary);">
+                        {{ essay.score_ielts }} / 9.0
+                    </span>
+                </td>
+                <td>
+                    <a href="/essay/review/{{ essay.id }}" class="btn btn-secondary" style="padding: 0.4rem 0.8rem; font-size: 0.8rem;">
+                        View Report
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 4rem; text-align: center; margin-top: 2rem;">
+    <h2 style="font-family: var(--font-heading); margin-bottom: 0.5rem; color: var(--text-secondary);">No essays reviewed yet</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">To get started, select any reading article, answer the comprehension check, and submit a response to its writing prompt.</p>
+    <a href="/" class="btn btn-primary">Choose an Article</a>
+</div>
+{% endif %}
+{% endblock %}

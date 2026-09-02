@@ -1,0 +1,254 @@
+[
+  {
+    "id": "b1_crispr",
+    "level": "B1+",
+    "title": "CRISPR-Cas9: The Molecular Scissors Revolutionizing Medicine",
+    "summary": [
+      "CRISPR-Cas9 is a gene-editing technology adapted from a natural defense mechanism in bacteria.",
+      "It allows scientists to cut and modify specific parts of DNA with high precision.",
+      "Potential applications include curing genetic diseases, improving crop yields, and fighting viruses.",
+      "Ethical concerns exist around germline editing, which alters DNA that can be inherited by future generations."
+    ],
+    "text": "Deoxyribonucleic acid (DNA) is the blueprint of life. It contains the instructions for building every living organism, from tiny bacteria to giant blue whales. For decades, scientists have wanted to edit this blueprint to cure genetic diseases, such as sickle cell anemia or cystic fibrosis. However, early gene-editing methods were expensive, slow, and difficult to use. This changed dramatically in 2012 with the discovery of CRISPR-Cas9.\n\nCRISPR stands for 'Clustered Regularly Interspaced Short Palindromic Repeats.' It sounds complicated, but it is simply a natural defense mechanism found in bacteria. When a virus attacks a bacterium, the bacterium saves a piece of the virus's DNA in its own genome. If the same virus attacks again, the bacterium uses this saved DNA to produce a molecule called RNA. This RNA acts as a guide, leading an enzyme called Cas9 to the viral DNA. Once there, the Cas9 enzyme acts like a pair of molecular scissors and cuts the virus's DNA, destroying the threat.\n\nJennifer Doudna and Emmanuelle Charpentier, two pioneering scientists, realized they could adapt this system to edit any organism's DNA, including humans. By creating a custom 'guide RNA' that matches a specific gene, scientists can direct the Cas9 enzyme to a exact location in a cell's DNA. When Cas9 cuts the DNA, the cell tries to repair the break. During this repair process, scientists can insert, remove, or modify genetic information. In 2020, Doudna and Charpentier were awarded the Nobel Prize in Chemistry for their groundbreaking work.\n\nThe potential applications of CRISPR are vast. In medicine, clinical trials are already showing promise. Patients with sickle cell disease have been successfully treated using CRISPR to correct the faulty gene in their red blood cells. Researchers are also exploring ways to use CRISPR to destroy cancer cells or make crops more resistant to drought and diseases. Imagine bananas that do not rot or wheat that can grow in salty soil; CRISPR could make these a reality, helping to solve global food shortages.\n\nDespite the excitement, CRISPR-Cas9 is not perfect. One major technical challenge is 'off-target effects.' Sometimes, the Cas9 enzyme cuts DNA in the wrong place, which could cause unwanted mutations or lead to cancer. Scientists are working hard to make CRISPR more precise to avoid these mistakes.\n\nFurthermore, CRISPR raises serious ethical questions. There is a critical difference between somatic gene editing and germline gene editing. Somatic editing makes changes to non-reproductive cells (like blood cells). These changes only affect the individual patient and cannot be passed down to their children. In contrast, germline editing alters the DNA of embryos, eggs, or sperm. This means the changes will be inherited by all future generations. Many scientists and ethicists argue that germline editing is dangerous because we do not know the long-term consequences of altering the human gene pool. There are also fears that it could lead to 'designer babies,' where wealthy parents pay to select their children's physical traits, intelligence, or athletic abilities, creating deeper social inequality.\n\nIn conclusion, CRISPR-Cas9 is a revolutionary tool that has transformed biotechnology. It offers hope for curing some of the world's most devastating diseases and addressing agricultural challenges. However, as society moves forward with this technology, it is essential to balance scientific progress with careful ethical considerations to ensure that its benefits are shared safely and fairly by everyone.",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "What is the primary function of CRISPR in its natural state?",
+        "options": [
+          "To replicate bacterial DNA during reproduction.",
+          "To protect bacteria from viral infections.",
+          "To repair mutations in human blood cells.",
+          "To synthesize proteins in plants."
+        ],
+        "answer": 1,
+        "explanation": "The text explains that CRISPR is a natural defense mechanism found in bacteria used to fight off viral attacks by cutting viral DNA."
+      },
+      {
+        "id": "q2",
+        "question": "Who were the scientists awarded the Nobel Prize for adapting CRISPR to gene editing?",
+        "options": [
+          "Albert Einstein and Marie Curie",
+          "Francis Crick and James Watson",
+          "Jennifer Doudna and Emmanuelle Charpentier",
+          "Charles Darwin and Gregor Mendel"
+        ],
+        "answer": 2,
+        "explanation": "According to the third paragraph, Jennifer Doudna and Emmanuelle Charpentier were awarded the Nobel Prize in Chemistry in 2020 for adapting this bacterial system to edit DNA."
+      },
+      {
+        "id": "q3",
+        "question": "What is meant by 'off-target effects' in CRISPR technology?",
+        "options": [
+          "The Cas9 enzyme failing to cut the DNA at all.",
+          "The RNA guide molecule disintegrating before reaching the cell.",
+          "The Cas9 enzyme cutting the DNA in unintended locations.",
+          "The patient's immune system attacking the modified cells."
+        ],
+        "answer": 2,
+        "explanation": "Paragraph 5 defines off-target effects as when the Cas9 enzyme cuts DNA in the wrong place, potentially causing unwanted mutations."
+      },
+      {
+        "id": "q4",
+        "question": "Why is germline gene editing considered more ethically controversial than somatic editing?",
+        "options": [
+          "It is much more expensive and difficult to perform.",
+          "It only affects the individual patient who receives the therapy.",
+          "It alters reproductive cells, meaning the changes are passed to future generations.",
+          "It is not supported by the Nobel Prize committee."
+        ],
+        "answer": 2,
+        "explanation": "The text explains that germline editing alters the DNA of embryos, eggs, or sperm, meaning the changes will be inherited by all future generations, raising concerns about long-term consequences and social inequality."
+      }
+    ],
+    "writing_prompt": "Discuss the ethical differences between somatic and germline gene editing as presented in the article. In your opinion, should germline gene editing be completely banned, or should it be permitted under strict regulations? Support your argument with references to the article (Maximum 750 words)."
+  },
+  {
+    "id": "b2_bioremediation",
+    "level": "B2",
+    "title": "Bioremediation: Harnessing Microorganisms to Clean Up Environmental Pollution",
+    "summary": [
+      "Bioremediation uses living microorganisms, like bacteria and fungi, to degrade environmental pollutants.",
+      "It is a sustainable and cost-effective alternative to traditional mechanical cleanup methods.",
+      "The process relies on microbial metabolism to break down toxic substances into harmless byproducts.",
+      "Limitations include slow degradation rates and the specific environmental conditions required for microbes to thrive."
+    ],
+    "text": "Industrialization has brought immense technological progress, but it has also left behind a legacy of environmental contamination. Toxic chemicals, heavy metals, oil spills, and plastic waste pollute ecosystems worldwide, threatening public health and biodiversity. Traditional cleanup methods, such as digging up contaminated soil and hauling it to landfills, or burning toxic substances, are often expensive, disruptive, and merely move the pollution from one place to another. In response, scientists have developed bioremediation—a biotechnology that utilizes living organisms to clean up polluted environments.\n\nBioremediation is primarily based on the metabolic processes of microorganisms, particularly bacteria, fungi, and microalgae. These microscopic organisms are remarkably adaptable. Many microbes view hazardous organic pollutants, such as hydrocarbons (found in oil) or industrial solvents, as sources of food and energy. Through a series of chemical reactions, the microbes break down complex, toxic molecules into simple, non-toxic substances like water, carbon dioxide, and harmless salts.\n\nThere are two main strategies in bioremediation: in situ and ex situ. In situ bioremediation involves treating the contaminated material at the site itself. This is highly desirable because it minimizes disruption to the local environment and avoids the cost of transportation. For example, during the Deepwater Horizon oil spill in 2010, native marine bacteria played a crucial role in degrading the oil plume deep in the Gulf of Mexico. To speed up this natural process, scientists often use 'biostimulation,' which involves adding nutrients like nitrogen and phosphorus to the soil or water to encourage the native microbes to multiply and work faster. Alternatively, 'bioaugmentation' involves introducing specialized, laboratory-grown microbial strains to the contaminated site if the native population cannot handle the pollutants.\n\nConversely, ex situ bioremediation requires excavating contaminated soil or pumping polluted groundwater to be treated elsewhere in controlled facilities. While more expensive and disruptive, ex situ methods allow scientists to optimize environmental variables like temperature, oxygen levels, and moisture, ensuring faster and more complete biodegradation.\n\nBioremediation offers several key advantages. First, it is an eco-friendly 'green' technology that works in harmony with nature. Second, it is generally much cheaper than mechanical alternatives. However, the technology is not a universal solution. It can be slow, sometimes taking months or even years to clean a site. Moreover, bioremediation is highly dependent on environmental conditions. If the temperature is too cold, the soil is too dry, or the pH is too acidic, the microbes may become inactive or die. Lastly, some contaminants, such as heavy metals (like lead and mercury) and radioactive waste, cannot be degraded by microorganisms. In these cases, microbes can only change the chemical form of the metal to make it less soluble and prevent it from leaking into the groundwater, but the metal itself remains in the environment.\n\nAs biotechnology advances, researchers are exploring genetic engineering to create 'super-microbes' designed to target specific, hard-to-degrade chemicals. While promising, releasing genetically modified organisms (GMOs) into the wild sparks intense ecological debate due to fears of unpredictable impacts on natural ecosystems. Nonetheless, bioremediation remains a vital and expanding field, demonstrating that nature's smallest organisms can help solve some of our largest environmental crises.",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "What is the core principle behind bioremediation?",
+        "options": [
+          "Using mechanical filters to extract heavy metals from soil.",
+          "Utilizing microbial metabolism to convert toxic pollutants into harmless substances.",
+          "Burning toxic chemicals at high temperatures in specialized plants.",
+          "Replacing natural ecosystems with synthetic habitats."
+        ],
+        "answer": 1,
+        "explanation": "The text states that bioremediation uses the metabolic processes of microorganisms to break down complex, toxic molecules into simple, non-toxic substances."
+      },
+      {
+        "id": "q2",
+        "question": "How does biostimulation differ from bioaugmentation?",
+        "options": [
+          "Biostimulation involves adding nutrients to help native microbes grow; bioaugmentation involves adding laboratory-grown microbes.",
+          "Biostimulation is an ex situ method; bioaugmentation is an in situ method.",
+          "Biostimulation removes heavy metals; bioaugmentation only works on organic compounds.",
+          "Biostimulation is cheaper but completely destroys the local soil structure."
+        ],
+        "answer": 0,
+        "explanation": "The text explains that biostimulation involves adding nutrients like nitrogen and phosphorus to encourage native microbes, while bioaugmentation involves introducing specialized, laboratory-grown microbial strains."
+      },
+      {
+        "id": "q3",
+        "question": "Which of the following pollutants CANNOT be broken down by microorganisms?",
+        "options": [
+          "Crude oil from ocean spills.",
+          "Industrial chemical solvents.",
+          "Heavy metals like lead and mercury.",
+          "Organic carbon compounds."
+        ],
+        "answer": 2,
+        "explanation": "The text explicitly mentions that heavy metals (like lead and mercury) and radioactive waste cannot be degraded by microorganisms; they can only be converted into less soluble forms."
+      },
+      {
+        "id": "q4",
+        "question": "What ecological concern is raised regarding the future of bioremediation?",
+        "options": [
+          "Microbes might multiply too fast and consume all the oxygen in the atmosphere.",
+          "Genetically modified microbes released into the environment could have unpredictable ecological impacts.",
+          "In situ bioremediation might lead to the excavation of entire forests.",
+          "Natural bacteria could mutate and start producing heavy metals."
+        ],
+        "answer": 1,
+        "explanation": "The last paragraph notes that releasing genetically modified organisms (GMOs) into the wild sparks debate due to fears of unpredictable impacts on natural ecosystems."
+      }
+    ],
+    "writing_prompt": "Compare and contrast in situ and ex situ bioremediation. What are their respective strengths and limitations? Under what conditions would a scientist choose one method over the other? Respond in an academic style (Maximum 750 words)."
+  },
+  {
+    "id": "b2p_mrna",
+    "level": "B2+",
+    "title": "The Dawn of mRNA Therapeutics: Re-engineering Cellular Instructions",
+    "summary": [
+      "mRNA therapeutics work by delivering genetic instructions to cells, enabling them to produce therapeutic proteins.",
+      "The key breakthrough was the stabilization of mRNA using lipid nanoparticles (LNPs) to bypass the body's immune defenses.",
+      "Unlike DNA therapies, mRNA does not integrate into the host cell's genome, reducing the risk of genetic mutations.",
+      "The rapid development of COVID-19 vaccines proved the platform's speed, versatility, and therapeutic potential."
+    ],
+    "text": "For over a century, traditional medicine has relied on introducing foreign molecules—such as chemical drugs or proteins—into the body to treat illnesses. However, a revolutionary paradigm shift is underway. Instead of importing therapeutic proteins, scientists are now sending genetic instructions directly into human cells, turning the body into its own drug factory. This biotechnology is powered by messenger RNA (mRNA).\n\nmRNA is a single-stranded molecule that carries genetic code from the DNA in a cell's nucleus to the ribosomes, where proteins are built. The concept of using synthetic mRNA as a therapeutic agent dates back to the late 20th century. In theory, if a patient lacks a crucial protein due to a genetic mutation, doctors could deliver synthetic mRNA containing the correct blueprint. The patient's ribosomes would read the mRNA and synthesize the missing protein, curing the condition.\n\nDespite the elegant theory, early mRNA research faced two monumental roadblocks: instability and immunogenicity. Naked mRNA is highly unstable; the human body is packed with enzymes called RNases that instantly destroy foreign RNA. Furthermore, the immune system recognizes foreign mRNA as a viral threat, triggering a massive, potentially lethal inflammatory response. For decades, these challenges led many researchers to dismiss mRNA as a dead end.\n\nThe breakthrough came through the collaborative work of biochemists, notably Katalin Kariko and Drew Weissman, who discovered that modifying the nucleosides (the building blocks of RNA) could stop the immune system from attacking the molecule. To solve the instability issue, engineers developed lipid nanoparticles (LNPs). These microscopic fat bubbles encapsulate the fragile mRNA, protecting it from enzymes and helping it slide through the cell membrane. Inside the cell, the LNP dissolves, releasing the mRNA into the cytoplasm.\n\nCrucially, mRNA therapeutics are safer than DNA-based gene therapies in one major way: integration. DNA therapies must enter the cell nucleus and alter the genome to work, which carries a small risk of disrupting healthy genes and causing cancer. Synthetic mRNA, however, does not enter the nucleus and cannot modify the patient's DNA. It performs its protein-building instructions in the cytoplasm and is naturally degraded by the cell within a few days.\n\nThe viability of mRNA technology was proven globally during the COVID-19 pandemic. The Pfizer-BioNTech and Moderna vaccines delivered mRNA instructing cells to produce a harmless version of the SARS-CoV-2 spike protein. The cells produced the protein, and the immune system learned to recognize and fight it. The speed of development was unprecedented—taking less than a year from sequencing the virus to distributing vaccines, compared to the traditional vaccine development timeline of ten years.\n\nToday, the success of COVID-19 vaccines has unlocked a massive pipeline of mRNA drugs. Scientists are developing mRNA vaccines for influenza, HIV, and malaria. In oncology, researchers are designing personalized cancer vaccines. By sequencing a patient's tumor, scientists identify unique cancer mutations and design an mRNA vaccine that trains the patient's immune system to target only those specific tumor cells. Beyond vaccines, mRNA is being tested to treat cardiovascular diseases by instructing heart cells to grow new blood vessels after a heart attack. Although challenges like temperature-sensitive storage and high manufacturing costs remain, the era of mRNA medicine has officially arrived, promising a new frontier in human health.",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "How do mRNA therapeutics differ from traditional medicines?",
+        "options": [
+          "They import laboratory-made proteins directly into the bloodstream.",
+          "They deliver genetic blueprints to cells so the body produces its own therapeutic proteins.",
+          "They physically repair damaged organs using surgical biotechnology.",
+          "They alter the patient's DNA permanently to prevent viral infections."
+        ],
+        "answer": 1,
+        "explanation": "The text explains that instead of importing foreign molecules, mRNA therapeutics send genetic instructions directly to cells, turning the body into its own drug factory."
+      },
+      {
+        "id": "q2",
+        "question": "What were the two primary challenges that early mRNA researchers faced?",
+        "options": [
+          "High toxicity of lipid molecules and lack of laboratory equipment.",
+          "Inability of ribosomes to read synthetic RNA and lack of funding.",
+          "High instability of RNA molecules and severe immune reactions.",
+          "DNA contamination and genetic mutations in the cell nucleus."
+        ],
+        "answer": 2,
+        "explanation": "Paragraph 3 states that the two monumental roadblocks were instability (RNA being instantly destroyed by enzymes) and immunogenicity (the immune system triggering a lethal inflammatory response)."
+      },
+      {
+        "id": "q3",
+        "question": "What is the purpose of Lipid Nanoparticles (LNPs) in mRNA delivery?",
+        "options": [
+          "To translate the mRNA code into amino acid chains.",
+          "To edit the DNA sequences in the cell nucleus.",
+          "To encapsulate and protect mRNA from enzymatic destruction and facilitate cell entry.",
+          "To act as antibodies that neutralize viral spike proteins."
+        ],
+        "answer": 2,
+        "explanation": "Paragraph 4 explains that LNPs act as microscopic fat bubbles that encapsulate fragile mRNA, protecting it from enzymes and helping it pass through the cell membrane."
+      },
+      {
+        "id": "q4",
+        "question": "Why is mRNA considered safer than DNA-based gene therapy?",
+        "options": [
+          "It is derived from natural plant extracts rather than synthetic compounds.",
+          "It operates only in the cytoplasm and does not integrate into or modify the cell's genomic DNA.",
+          "It remains in the human body permanently, eliminating the need for booster doses.",
+          "It does not require any protective delivery vehicles like LNPs."
+        ],
+        "answer": 1,
+        "explanation": "The text states that mRNA does not enter the nucleus and cannot modify the patient's DNA, unlike DNA therapies which carry a risk of disrupting healthy genes."
+      }
+    ],
+    "writing_prompt": "Explain the biological mechanism of mRNA therapeutics and discuss why the vaccine development process for COVID-19 was so much faster than traditional vaccine methods. Cite details from the article to support your answer (Maximum 750 words)."
+  },
+  {
+    "id": "c1_xenotransplantation",
+    "level": "C1",
+    "title": "Xenotransplantation and Synthetic Bioengineering: Resolving the Organ Shortage Crisis",
+    "summary": [
+      "Xenotransplantation involves transplanting non-human animal organs into human recipients to solve the chronic organ shortage.",
+      "The primary obstacle is hyperacute rejection, where the human immune system rapidly destroys the foreign organ.",
+      "Advances in CRISPR-Cas9 have enabled genetic modifications in pigs to knock out immunogenic sugar genes and insert human regulatory genes.",
+      "Ethical dilemmas include animal welfare concerns, potential zoonotic disease transmission (PERVs), and the high cost of development."
+    ],
+    "text": "The chronic scarcity of donor organs remains one of the most agonizing crises in modern medicine. Every day, thousands of patients globally languish on transplant waiting lists, and many succumb to organ failure before a suitable human donor is found. In response to this persistent deficit, biomedical science is aggressively pursuing two high-tech alternatives: xenotransplantation—the transplantation of living cells, tissues, or organs from non-human animal species into human recipients—and synthetic bioengineering, which aims to manufacture organs from scratch. While both fields represent the vanguard of biotechnology, they also present complex immunological, biological, and ethical conundrums.\n\nPigs have emerged as the premier candidate species for xenotransplantation. Their organs, particularly hearts and kidneys, are anatomically and physiologically similar in size to those of humans. However, transplanting a wild-type (genetically unmodified) pig organ into a human triggers an immediate, catastrophic immunological reaction known as hyperacute rejection. Within minutes, the human recipient's antibodies identify a sugar molecule called alpha-gal on the surface of the pig's blood vessels as foreign. This activates the complement system, leading to massive thrombosis, blood vessel destruction, and organ failure.\n\nThe realization of xenotransplantation has only become feasible recently through the implementation of CRISPR-Cas9 gene-editing technology. To circumvent hyperacute rejection, bioengineering companies have generated highly modified pigs. The editing process involves three critical phases. First, scientists perform 'knockouts' of the pig genes responsible for synthesizing alpha-gal and other immunogenic sugars. Second, they insert human transgenes that regulate the complement system and prevent blood clotting. Third, they inactivate Porcine Endogenous Retroviruses (PERVs)—dormant viral sequences embedded within the pig genome. PERVs pose a potential zoonotic threat, as they could reactivate and infect the immunosuppressed human host, potentially spawning a new epidemic. By executing dozens of precise genetic edits in a single pig cell, scientists have created animals whose organs are structurally porcine but immunologically disguised as human.\n\nIn parallel, synthetic bioengineering offers an alternative path that bypasses animal usage entirely. This approach involves 3D bioprinting and cellular scaffolding. Using a patient's own stem cells, scientists can seed a biodegradable polymer scaffold or a decellularized donor organ framework. Because the cell lines are derived from the recipient, the printed organ is genetically identical, theoretically eliminating the need for lifelong, toxic immunosuppressive drug regimens. Currently, bioengineers have successfully printed simple tissues, such as skin and bladder patches, but printing solid, highly vascularized organs like livers or hearts remains a monumental challenge due to the difficulty of fabricating the intricate network of microscopic capillaries required to sustain the inner cells.\n\nDespite the scientific triumphs—such as the landmark clinical transplants of genetically modified pig hearts into terminally ill patients—xenotransplantation and synthetic bioengineering raise profound philosophical and ethical concerns. Animal rights advocates argue that breeding genetically altered pigs as 'organ crops' constitutes severe exploitation. There are also public health concerns regarding the transmission of unknown animal pathogens to the general population. Furthermore, the prohibitive cost of these therapies raises questions of distributive justice: will these life-saving technologies be universally accessible, or will they remain exclusive privileges for the wealthy?\n\nAs we stand on the threshold of this medical revolution, the convergence of gene editing and synthetic biology promises to render the transplant waiting list obsolete. However, navigating the path forward requires not only scientific rigor but also robust regulatory frameworks and a consensus on the ethical boundaries of re-engineering life for human survival.",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "What is the primary cause of hyperacute rejection in pig-to-human transplants?",
+        "options": [
+          "The anatomical difference in heart chamber sizes.",
+          "Human antibodies targeting the sugar molecule alpha-gal on the pig blood vessels.",
+          "Porcine Endogenous Retroviruses (PERVs) mutating inside the liver.",
+          "The lack of oxygen delivery by porcine red blood cells."
+        ],
+        "answer": 1,
+        "explanation": "The text explains that hyperacute rejection is triggered when human antibodies identify the sugar molecule alpha-gal on the pig's blood vessel surfaces, activating the complement system and causing rapid organ failure."
+      },
+      {
+        "id": "q2",
+        "question": "How does gene editing make pig organs acceptable to the human immune system?",
+        "options": [
+          "By removing pig cells and replacing them with synthetic polymers.",
+          "By knocking out immunogenic sugar genes and inserting human regulatory transgenes.",
+          "By injecting the pig with human blood until its organs adapt.",
+          "By coating the pig heart with a layer of patient's stem cells."
+        ],
+        "answer": 1,
+        "explanation": "Paragraph 3 describes how CRISPR is used to perform 'knockouts' of pig sugar genes and insert human transgenes that prevent blood clotting and regulate the complement system."
+      },
+      {
+        "id": "q3",
+        "question": "What is the primary medical risk associated with Porcine Endogenous Retroviruses (PERVs)?",
+        "options": [
+          "They cause pig organs to grow to excessive sizes.",
+          "They could reactivate and transmit zoonotic infections to immunosuppressed human patients.",
+          "They make the pig organ reject the human blood supply.",
+          "They prevent 3D bioprinting machines from mapping the capillaries."
+        ],
+        "answer": 1,
+        "explanation": "The text notes that PERVs are dormant viral sequences that pose a zoonotic threat because they could reactivate and infect the immunosuppressed host."
+      },
+      {
+        "id": "q4",
+        "question": "Why is 3D bioprinting solid organs like hearts more difficult than printing simple tissues?",
+        "options": [
+          "Solid organs require animal DNA, which is prohibited.",
+          "It is difficult to replicate the complex network of microscopic capillaries to feed the inner cells.",
+          "Stem cells cannot survive in 3D printers.",
+          "Biodegradable scaffolds are rejected by human stem cells."
+        ],
+        "answer": 1,
+        "explanation": "Paragraph 4 explains that printing solid organs remains a challenge due to the difficulty of fabricating the intricate network of microscopic capillaries required to sustain the inner cells."
+      }
+    ],
+    "writing_prompt": "Critically analyze the immunological challenges of xenotransplantation and explain how CRISPR-Cas9 is being utilized to overcome them. Discuss the potential public health risks associated with PERVs and outline the ethical debate surrounding the use of genetically modified animals for human organ harvesting. Support your analysis with references to the text (Maximum 750 words)."
+  }
+]

@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}Essay Evaluation - BioEnglish Prep{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div class="dashboard-title">
+        <span class="level-badge 
+            {% if essay.article_level == 'B1+' %}level-b1
+            {% elif essay.article_level == 'B2' %}level-b2
+            {% elif essay.article_level == 'B2+' %}level-b2p
+            {% else %}level-c1{% endif %}">
+            {{ essay.article_level }}
+        </span>
+        <h1 style="font-family: var(--font-heading); font-size: 1.8rem; margin: 0.5rem 0;">AI Feedback Report</h1>
+        <p style="color: var(--text-muted);">Article: <strong>{{ essay.article_title }}</strong> | Submitted on {{ essay.date_submitted }}</p>
+    </div>
+    <a href="/history" class="btn btn-secondary">Back to History</a>
+</div>
+
+<div class="feedback-container">
+    <!-- Score Summary Grid -->
+    <h2 style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Estimated Sınav Puanları</h2>
+    <div class="score-summary-grid">
+        <div class="score-badge-large">
+            <h4>TOEFL iBT Score</h4>
+            <div class="score-num">{{ essay.score_toefl }} <span style="font-size:1rem; color:var(--text-muted);">/30</span></div>
+        </div>
+        <div class="score-badge-large">
+            <h4>IELTS Band</h4>
+            <div class="score-num" style="color: var(--color-secondary);">{{ essay.score_ielts }} <span style="font-size:1rem; color:var(--text-muted);">/9.0</span></div>
+        </div>
+        <div class="score-badge-large">
+            <h4>Grammar (Dilbilgisi)</h4>
+            <div class="score-num" style="color: var(--color-accent); font-size: 2rem;">{{ essay.grammar_score }} <span style="font-size:0.8rem; color:var(--text-muted);">/10</span></div>
+        </div>
+        <div class="score-badge-large">
+            <h4>Vocabulary (Kelime)</h4>
+            <div class="score-num" style="color: var(--color-primary); font-size: 2rem;">{{ essay.vocabulary_score }} <span style="font-size:0.8rem; color:var(--text-muted);">/10</span></div>
+        </div>
+    </div>
+
+    <!-- CEFR Assessment Alert -->
+    <div style="background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.5rem;">CEFR Level Assessment & C1 Road</h3>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: #e5e7eb;">
+            {{ essay.feedback_json.level_evaluation }}
+        </p>
+    </div>
+
+    <!-- Feedback columns -->
+    <div class="feedback-grid">
+        <!-- Left: Essay text & Overall feedback -->
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <div class="feedback-block">
+                <h3>Submitted Essay</h3>
+                <div style="background: rgba(10, 12, 16, 0.3); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; font-size: 0.95rem; line-height: 1.7; color: #e5e7eb; white-space: pre-wrap; max-height: 400px; overflow-y: auto;">{{ essay.essay_text }}</div>
+            </div>
+
+            <div class="feedback-block">
+                <h3>Overall Review (Genel Değerlendirme)</h3>
+                <p style="font-size: 0.95rem; line-height: 1.7; color: #d1d5db;">{{ essay.feedback_json.overall_feedback }}</p>
+            </div>
+        </div>
+
+        <!-- Right: Specific Corrections and Vocabulary -->
+        <div style="display: flex; flex-direction: column; gap: 2rem;">
+            <!-- Grammar Corrections -->
+            <div class="feedback-block">
+                <h3>Grammar & Sentence Corrections</h3>
+                {% if essay.feedback_json.grammar_corrections and essay.feedback_json.grammar_corrections|length > 0 %}
+                    {% for corr in essay.feedback_json.grammar_corrections %}
+                        <div class="correction-card">
+                            <div class="correction-original">“{{ corr.original }}”</div>
+                            <div class="correction-corrected">✓ “{{ corr.corrected }}”</div>
+                            <div class="correction-explain">{{ corr.explanation }}</div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">Excellent! No major grammar errors detected by the AI.</p>
+                {% endif %}
+            </div>
+
+            <!-- Vocabulary Suggestions -->
+            <div class="feedback-block">
+                <h3>Academic Vocabulary Suggestions (C1 Level)</h3>
+                {% if essay.feedback_json.vocabulary_suggestions and essay.feedback_json.vocabulary_suggestions|length > 0 %}
+                    {% for sug in essay.feedback_json.vocabulary_suggestions %}
+                        <div class="suggestion-card">
+                            <div class="suggestion-header">
+                                <span class="orig">{{ sug.original_word }}</span>
+                                <span class="arrow">➔</span>
+                                <span class="sugg">{{ sug.suggested_word }}</span>
+                            </div>
+                            <div style="font-size: 0.85rem; font-style: italic; color: var(--text-muted); margin-bottom: 0.5rem;">
+                                Context: "...{{ sug.context }}..."
+                            </div>
+                            <div style="font-size: 0.85rem; color: var(--text-secondary);">
+                                <strong>Why:</strong> {{ sug.explanation }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="color: var(--text-muted); font-size: 0.9rem;">No major vocabulary enhancements suggested.</p>
+                {% endif %}
+            </div>
+
+            <!-- Coherence Tips -->
+            <div class="feedback-block">
+                <h3>Coherence & Cohesion Tips</h3>
+                <ul style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; font-size: 0.9rem; color: var(--text-secondary);">
+                    {% for tip in essay.feedback_json.coherence_tips %}
+                        <li>{{ tip }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

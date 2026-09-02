@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - BioEnglish Prep{% endblock %}
+
+{% block content %}
+<div class="dashboard-header">
+    <div class="dashboard-title">
+        <h1>Your Learning Dashboard</h1>
+        <p>Advance your reading and writing from B1+ to C1 using specialized biotechnology literature.</p>
+    </div>
+</div>
+
+<!-- Main Tabs Navigation -->
+<div class="tabs-navigation">
+    <button id="nav-tab-articles" class="tab-nav-btn active" onclick="switchMainTab('articles-tab')">📚 Study Materials</button>
+    <button id="nav-tab-progress" class="tab-nav-btn" onclick="switchMainTab('progress-tab')">📈 My Progress & Words</button>
+</div>
+
+<!-- TAB 1: ARTICLES (STUDY MATERIALS) -->
+<div id="articles-tab" class="tab-content-panel active">
+    <!-- Level Selector Sub-tabs -->
+    <div class="level-selector-tabs">
+        <button class="level-tab-btn active" data-level="B1+" onclick="filterLevel('B1+')">B1+ Intermediate</button>
+        <button class="level-tab-btn" data-level="B2" onclick="filterLevel('B2')">B2 Vantage</button>
+        <button class="level-tab-btn" data-level="B2+" onclick="filterLevel('B2+')">B2+ Advanced</button>
+        <button class="level-tab-btn" data-level="C1" onclick="filterLevel('C1')">C1 Proficient</button>
+    </div>
+
+    <!-- Article Cards Container -->
+    <div class="level-grid" id="articles-list-container">
+        {% if articles|length > 0 %}
+            {% for a in articles %}
+                <a href="/reader/{{ a.id }}" class="level-card article-card-item" data-level="{{ a.level }}">
+                    <div>
+                        <span class="level-badge 
+                            {% if a.level == 'B1+' %}level-b1
+                            {% elif a.level == 'B2' %}level-b2
+                            {% elif a.level == 'B2+' %}level-b2p
+                            {% else %}level-c1{% endif %}" style="font-size: 0.7rem;">
+                            {{ a.level }}
+                        </span>
+                        <h2>{{ a.title }}</h2>
+                        <p>Scientific reading comprehension, interactive vocabulary exploration, and target-based writing prompts.</p>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--color-primary); font-weight: 600; margin-top: 1rem;">
+                        <span>Start Practice →</span>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <div style="grid-column: 1/-1; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 2.5rem; text-align: center; color: var(--text-muted);">
+                <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">No articles available yet.</p>
+                <p style="font-size: 0.85rem;">Go to Settings & Tools to generate a custom biotech article to start learning!</p>
+            </div>
+        {% endif %}
+        
+        <!-- Placeholder for empty level states (will be shown dynamically if no articles match) -->
+        <div id="no-articles-message" style="display: none; grid-column: 1/-1; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 2.5rem; text-align: center; color: var(--text-muted); font-size: 0.9rem;">
+            No articles generated for this level yet. Go to Settings & Tools to generate a custom biotech article at this level.
+        </div>
+    </div>
+</div>
+
+<!-- TAB 2: MY PROGRESS & WORDS -->
+<div id="progress-tab" class="tab-content-panel">
+    <!-- Statistics Cards -->
+    <div class="stat-grid">
+        <div class="stat-card">
+            <h3>Practiced Articles</h3>
+            <div class="stat-value">{{ stats.articles_practiced }}</div>
+        </div>
+        <div class="stat-card">
+            <h3>Vocabulary Bank</h3>
+            <div class="stat-value">{{ stats.vocab_count }} words</div>
+        </div>
+        <div class="stat-card">
+            <h3>Average TOEFL Score</h3>
+            <div class="stat-value">{{ stats.avg_toefl }} / 30</div>
+        </div>
+        <div class="stat-card">
+            <h3>Average IELTS Band</h3>
+            <div class="stat-value">{{ stats.avg_ielts }} / 9.0</div>
+        </div>
+    </div>
+
+    <!-- Progress Chart and Vocabulary Sidebar -->
+    <div class="progress-section">
+        <div class="chart-card">
+            <h3 style="font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 1rem; color: var(--color-secondary);">Writing Score Trajectory</h3>
+            {% if history|length > 0 %}
+                <div class="chart-container" style="position: relative; height: 260px; width: 100%;">
+                    <canvas id="progressChart"></canvas>
+                </div>
+            {% else %}
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 260px; color: var(--text-muted);">
+                    <p>No writing history found.</p>
+                    <p style="font-size: 0.85rem; margin-top: 0.25rem;">Submit your first essay to see your score trajectory!</p>
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="vocabulary-sidebar">
+            <h3 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--color-primary);">My Vocabulary Bank</h3>
+            <div class="vocab-list-mini">
+                {% if vocab|length > 0 %}
+                    {% for item in vocab %}
+                        <div class="vocab-item-mini" title="{{ item.definition }} - Example: {{ item.example }}">
+                            <div>
+                                <span class="vocab-word-text">{{ item.word }}</span>
+                                <p style="font-size: 0.75rem; color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; max-width: 180px;">
+                                    {{ item.definition }}
+                                </p>
+                            </div>
+                            <button class="dict-close" onclick="deleteVocabWord('{{ item.word }}')" style="font-size: 1rem;">&times;</button>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div style="display: flex; justify-content: center; align-items: center; height: 100%; color: var(--text-muted); font-size: 0.85rem; text-align: center;">
+                        Click on any word inside articles to save it to your word bank!
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+    // ==========================================
+    // TAB NAVIGATION LOGIC
+    // ==========================================
+    function switchMainTab(tabId) {
+        // Hide all panels
+        document.querySelectorAll('.tab-content-panel').forEach(panel => {
+            panel.classList.remove('active');
+        });
+        
+        // Remove active state from nav buttons
+        document.querySelectorAll('.tab-nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Show selected panel
+        document.getElementById(tabId).classList.add('active');
+        
+        // Highlight active nav button
+        if (tabId === 'articles-tab') {
+            document.getElementById('nav-tab-articles').classList.add('active');
+        } else if (tabId === 'progress-tab') {
+            document.getElementById('nav-tab-progress').classList.add('active');
+        }
+    }
+
+    // ==========================================
+    // LEVEL FILTER LOGIC
+    // ==========================================
+    function filterLevel(level) {
+        // Toggle active class on level pill buttons
+        document.querySelectorAll('.level-tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-level') === level) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Loop through all article items and toggle visibility
+        let visibleCount = 0;
+        document.querySelectorAll('.article-card-item').forEach(card => {
+            const cardLevel = card.getAttribute('data-level');
+            if (cardLevel === level) {
+                card.style.display = 'flex';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Toggle empty state message
+        const noArticlesMsg = document.getElementById('no-articles-message');
+        if (noArticlesMsg) {
+            if (visibleCount === 0) {
+                noArticlesMsg.style.display = 'block';
+            } else {
+                noArticlesMsg.style.display = 'none';
+            }
+        }
+    }
+
+    // Initialize with B1+ level view by default
+    document.addEventListener('DOMContentLoaded', () => {
+        filterLevel('B1+');
+    });
+
+    // ==========================================
+    // PROGRESS CHART LOGIC
+    // ==========================================
+    {% if history|length > 0 %}
+    const ctx = document.getElementById('progressChart').getContext('2d');
+    
+    // Reverse historical data to show chronological progress (left-to-right)
+    const historyData = {{ history|tojson }}.reverse();
+    
+    const labels = historyData.map(h => {
+        const date = new Date(h.date_submitted);
+        return date.toLocaleDateString('tr-TR', {month: 'short', day: 'numeric'});
+    });
+    
+    const toeflScores = historyData.map(h => h.score_toefl);
+    const ieltsScores = historyData.map(h => h.score_ielts);
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    label: 'TOEFL Score (0-30)',
+                    data: toeflScores,
+                    borderColor: '#10b981',
+                    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                    yAxisID: 'y-toefl',
+                    tension: 0.3,
+                    borderWidth: 3,
+                    fill: true
+                },
+                {
+                    label: 'IELTS Band (0-9)',
+                    data: ieltsScores,
+                    borderColor: '#3b82f6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    yAxisID: 'y-ielts',
+                    tension: 0.3,
+                    borderWidth: 3,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                'y-toefl': {
+                    type: 'linear',
+                    position: 'left',
+                    min: 0,
+                    max: 30,
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    ticks: { color: '#9ca3af' }
+                },
+                'y-ielts': {
+                    type: 'linear',
+                    position: 'right',
+                    min: 0,
+                    max: 9.0,
+                    grid: { drawOnChartArea: false },
+                    ticks: { color: '#9ca3af' }
+                },
+                x: {
+                    grid: { color: 'rgba(255,255,255,0.05)' },
+                    ticks: { color: '#9ca3af' }
+                }
+            },
+            plugins: {
+                legend: {
+                    labels: { color: '#f3f4f6', font: { family: 'Outfit' } }
+                }
+            }
+        }
+    });
+    {% endif %}
+</script>
+{% endblock %}

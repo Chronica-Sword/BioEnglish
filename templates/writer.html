@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Integrated Writing - BioEnglish Prep{% endblock %}
+
+{% block content %}
+<!-- Hidden input for API call -->
+<input type="hidden" id="article-id" value="{{ article.id }}">
+
+<div class="writer-layout">
+    <!-- Left Pane: Prompt and Article Reference -->
+    <div class="prompt-pane">
+        <span class="level-badge 
+            {% if article.level == 'B1+' %}level-b1
+            {% elif article.level == 'B2' %}level-b2
+            {% elif article.level == 'B2+' %}level-b2p
+            {% else %}level-c1{% endif %}" style="margin-bottom: 1rem;">
+            {{ article.level }} Prompt
+        </span>
+        <h2 style="font-family: var(--font-heading); font-size: 1.4rem; margin: 0.5rem 0 1.5rem 0;">Integrated Writing Task</h2>
+        
+        <div style="background: rgba(255, 255, 255, 0.02); border: 1px solid var(--border-color); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;">
+            <h3 style="font-size: 1.05rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--color-secondary);">Writing Prompt:</h3>
+            <p style="color: #e5e7eb; font-size: 0.95rem; line-height: 1.6;">{{ article.writing_prompt }}</p>
+        </div>
+
+        <h3 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--color-primary); margin-bottom: 0.75rem;">Article Summary (Key Points to reference):</h3>
+        <ul style="padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; color: var(--text-secondary); font-size: 0.9rem;">
+            {% for point in article.summary %}
+                <li>{{ point }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Right Pane: Text Editor -->
+    <div class="writing-pane">
+        <div class="editor-container">
+            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 0.75rem; margin-bottom: 0.5rem;">
+                <span style="font-weight: 600; font-family: var(--font-heading);">Write your response:</span>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">Recommended Time: 30:00</span>
+                    <span id="writing-timer" style="font-family: monospace; font-size: 1.1rem; font-weight: bold; color: var(--color-primary);">30:00</span>
+                </div>
+            </div>
+            
+            <textarea id="essay-editor" class="editor-textarea" placeholder="Start typing your essay here... Use the summary points on the left to support your integrated analysis. Write between 250 to 500 words for optimal assessment (Maximum 750 words)."></textarea>
+            
+            <div class="editor-footer">
+                <span id="word-warning">Words: <span id="word-count">0</span> / 750</span>
+                <span>Press Submit to start Gemini AI assessment</span>
+            </div>
+        </div>
+        
+        <button id="btn-submit-essay" class="btn btn-primary" style="width: 100%; padding: 1rem; font-size: 1.1rem;">
+            Submit Essay for AI Review 🧬
+        </button>
+    </div>
+</div>
+
+<!-- Loading Overlay during AI grading -->
+<div id="loading-overlay" class="loading-overlay">
+    <div class="spinner"></div>
+    <div class="loading-text">Analyzing Your Writing</div>
+    <div id="loading-quote" style="color: var(--text-secondary); font-size: 0.95rem; text-align: center; max-width: 400px; margin-top: 0.5rem;">
+        Gemini is evaluating grammar, vocabulary, and coherence...
+    </div>
+</div>
+{% endblock %}
